@@ -1,73 +1,70 @@
 <!DOCTYPE html>
-<html class="preload" lang="en">
-  <head>
-    <!-- Site designed for Drop by the team at 
-    ███╗   ██╗███████╗████████╗██╗     ██╗███████╗██╗   ██╗
-    ████╗  ██║██╔════╝╚══██╔══╝██║     ██║██╔════╝╚██╗ ██╔╝
-    ██╔██╗ ██║█████╗     ██║   ██║     ██║█████╗   ╚████╔╝ 
-    ██║╚██╗██║██╔══╝     ██║   ██║     ██║██╔══╝    ╚██╔╝  
-    ██║ ╚████║███████╗   ██║   ███████╗██║██║        ██║   
-    ╚═╝  ╚═══╝╚══════╝   ╚═╝   ╚══════╝╚═╝╚═╝        ╚═╝    -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 1em;
+        }
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e63946;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Coming Soon</h1>
+        <p>We are working hard to launch our new website. Stay tuned!</p>
+        <p>MAVINDA SOLUTIONS</p>
+        <div id="countdown"></div>
+    </div>
 
-    <!-- The name of your site that shows up in the browser tab -->
-    <title>Welcome to my site</title>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Oct 15, 2024 00:00:00").getTime();
 
-    <!-- Describe what your site is about -->
-    <meta name="description" content="A list of places you can find me on the web.">
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
 
-    <!-- This is the small icon that shows up in the browser tab -->
-    <link rel="shortcut icon" href="/images/favicon.png">
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    <!-- Styling for this site -->
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
 
-  <!-- This class is removed if the user has JavaScript enabled -->
-  <body class="no-js">
-    <header>
-      <!-- Dark mode toggle -->
-      <div class="mode-toggle">
-        <button class="[ toggle-button ] [ js-mode-toggle ]">
-          <span class="toggle-icon" aria-hidden="true"></span>
-          <span class="[ toggle-text ] [ js-mode-toggle-text ]">Switch to dark theme</span>
-        </button>
-      </div>
-    </header>
-    <main>
-      <section class="about">
-        <h1>Frodo Baggins</h1>
-        <p>Frodo is a proven leader who thrives in small teams and can go the distance.</p>
-      </section>
-      <nav class="links">
-        <!-- Update <a href=""> to point to your accounts -->
-        <!-- Update <span> to your usernames -->
-        <a href="mailto:frodo@bag.end">
-          <strong>E-mail</strong>
-          <span>frodo@bag.end</span>
-        </a>
-        <a href="https://twitter.com/frodobaggins">
-          <strong>Twitter</strong>
-          <span>@frodobaggins</span>
-        </a>
-        <a href="https://linkedin.com">
-          <strong>LinkedIn</strong>
-          <span>@frodobaggins</span>
-        </a>
-        <a href="https://github.com">
-          <strong>GitHub</strong>
-          <span>@frodobags</span>
-        </a>
-        <a href="https://codepen.io">
-          <strong>CodePen</strong>
-          <span>@frodobags</span>
-        </a>
-      </nav>
-    </main>
-
-    <!-- Dark mode button functionality -->
-    <script src="/js/dark-mode.js"></script>
-  </body>
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "We're live!";
+            }
+        }, 1000);
+    </script>
+</body>
 </html>

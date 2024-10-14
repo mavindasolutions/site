@@ -46,29 +46,42 @@
 
         /* Style for each image */
         .image-box {
-            width: 100px;
-            height: 100px;
-            background-size: cover;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-size: cover; /* Covers the entire div */
             position: absolute;
-            animation: move 20s linear infinite; /* Animation for movement */
+            animation: move 10s linear infinite; /* Animation for movement */
+            opacity: 0; /* Start fully transparent */
         }
 
         /* Background images for each box */
-        .image-box:nth-child(1) { background-image: url('1.png'); }
-        .image-box:nth-child(2) { background-image: url('2.png'); }
-        .image-box:nth-child(3) { background-image: url('3.png'); }
-        .image-box:nth-child(4) { background-image: url('4.png'); }
-        .image-box:nth-child(5) { background-image: url('5.png'); }
-        .image-box:nth-child(6) { background-image: url('6.png'); }
-        .image-box:nth-child(7) { background-image: url('7.png'); }
-        .image-box:nth-child(8) { background-image: url('8.png'); }
-        .image-box:nth-child(9) { background-image: url('9.png'); }
-        .image-box:nth-child(10) { background-image: url('10.png'); }
+        .image-box:nth-child(1) { background-image: url('image1.png'); }
+        .image-box:nth-child(2) { background-image: url('image2.png'); }
+        .image-box:nth-child(3) { background-image: url('image3.png'); }
+        .image-box:nth-child(4) { background-image: url('image4.png'); }
+        .image-box:nth-child(5) { background-image: url('image5.png'); }
+        .image-box:nth-child(6) { background-image: url('image6.png'); }
+        .image-box:nth-child(7) { background-image: url('image7.png'); }
+        .image-box:nth-child(8) { background-image: url('image8.png'); }
+        .image-box:nth-child(9) { background-image: url('image9.png'); }
+        .image-box:nth-child(10) { background-image: url('image10.png'); }
 
-        /* Keyframes for the animation */
+        /* Keyframes for the movement and fading effect */
         @keyframes move {
-            0% { transform: translateY(100vh); } /* Start below the viewport */
-            100% { transform: translateY(-100vh); } /* End above the viewport */
+            0% { 
+                transform: translateY(100vh); /* Start below the viewport */
+                opacity: 0; /* Fully transparent */
+            }
+            10% {
+                opacity: 1; /* Fade in */
+            }
+            80% {
+                opacity: 1; /* Fully visible */
+            }
+            100% { 
+                transform: translateY(-100vh); /* End above the viewport */
+                opacity: 0; /* Fade out */
+            }
         }
     </style>
 </head>
@@ -124,4 +137,3 @@
     </script>
 </body>
 </html>
-

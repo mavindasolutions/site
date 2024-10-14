@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+\<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,8 +50,8 @@
             height: 100%; /* Full height */
             background-size: cover; /* Covers the entire div */
             position: absolute;
-            animation: move 10s linear infinite; /* Animation for movement */
             opacity: 0; /* Start fully transparent */
+            transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
         }
 
         /* Background images for each box */
@@ -65,24 +65,6 @@
         .image-box:nth-child(8) { background-image: url('8.png'); }
         .image-box:nth-child(9) { background-image: url('9.png'); }
         .image-box:nth-child(10) { background-image: url('10.png'); }
-
-        /* Keyframes for the movement and fading effect */
-        @keyframes move {
-            0% { 
-                transform: translateY(100vh); /* Start below the viewport */
-                opacity: 0; /* Fully transparent */
-            }
-            10% {
-                opacity: 1; /* Fade in */
-            }
-            80% {
-                opacity: 1; /* Fully visible */
-            }
-            100% { 
-                transform: translateY(-100vh); /* End above the viewport */
-                opacity: 0; /* Fade out */
-            }
-        }
     </style>
 </head>
 <body>
@@ -134,6 +116,27 @@
                 document.getElementById("countdown").innerHTML = "We're live!";
             }
         }, 1000);
+
+        // Function to show images one by one
+        const images = document.querySelectorAll('.image-box');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            // Hide all images
+            images.forEach((img) => img.style.opacity = 0);
+            
+            // Show the current image
+            images[currentIndex].style.opacity = 1;
+
+            // Update the index for the next image
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Schedule the next image to show after 2 seconds
+            setTimeout(showNextImage, 2000);
+        }
+
+        // Start showing images
+        showNextImage();
     </script>
 </body>
 </html>

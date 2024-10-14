@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,12 +36,15 @@
         /* Container for moving images */
         .moving-images {
             position: absolute;
-            top: ;
+            top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             z-index: -1; /* Keeps images behind the main content */
             pointer-events: none; /* Ensures the moving images are not clickable */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
         }
 
         /* Style for each image */
@@ -124,13 +127,13 @@
         function showNextImage() {
             // Hide all images
             images.forEach((img, index) => {
-                img.style.opacity = index === currentIndex ? 1 : 0; // Show current image, hide others
+                img.style.opacity = index === currentIndex ? 0.75 : 0; // Show current image at 75% opacity, hide others
             });
             
             // Update the index for the next image
             currentIndex = (currentIndex + 1) % images.length;
 
-            // Schedule the next image to show after 2 seconds
+            // Schedule the next image to show after 6 seconds
             setTimeout(showNextImage, 6000);
         }
 

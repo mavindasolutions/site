@@ -58,6 +58,25 @@
             transform: translate(-50%, -50%); /* Offset to center */
             opacity: 0; /* Start fully transparent */
             transition: opacity 3s ease-in-out; /* Smooth transition for opacity */
+            animation: move 6s linear infinite; /* Animation for movement */
+        }
+
+        /* Keyframes for the upward movement */
+        @keyframes move {
+            0% { 
+                transform: translate(-50%, 100vh); /* Start below the viewport */
+                opacity: 0; /* Fully transparent */
+            }
+            10% {
+                opacity: 0.75; /* Fade in */
+            }
+            90% {
+                opacity: 0.75; /* Fully visible */
+            }
+            100% { 
+                transform: translate(-50%, -100vh); /* End above the viewport */
+                opacity: 0; /* Fade out */
+            }
         }
 
         /* Background images for each box */

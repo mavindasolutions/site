@@ -20,20 +20,20 @@
         h1 {
             font-size: 3em;
             margin-bottom: 0.5em;
-            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Neon gold effect */
+            text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFFFF, 0 0 15px #FFFFFF; /* Neon white effect */
         }
 
         p {
             font-size: 1.2em;
             margin-bottom: 1em;
-            text-shadow: 0 0 3px #FFD700, 0 0 5px #FFD700; /* Neon gold effect for paragraph */
+            text-shadow: 0 0 3px #FFFFFF, 0 0 5px #FFFFFF; /* Neon white effect for paragraph */
         }
 
         #countdown {
             font-size: 2em;
             font-weight: bold;
-            color: #FFD700; /* Gold color */
-            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; /* Neon gold effect */
+            color: #FFFFFF; /* White color */
+            text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFFFF; /* Neon white effect */
         }
 
         /* Container for moving images */
@@ -49,14 +49,12 @@
 
         /* Style for each image */
         .image-box {
-            width: 60%; /* Occupy 60% of the width */
-            height: 60%; /* Occupy 60% of the height */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
             background-size: cover; /* Covers the entire div */
             position: absolute;
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, 100vh); /* Start below the viewport */
             opacity: 0; /* Start fully transparent */
-            transition: opacity 1s ease-in-out, transform 6s ease-in-out; /* Smooth transition */
+            transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
         }
 
         /* Background images for each box */
@@ -70,6 +68,11 @@
         .image-box:nth-child(8) { background-image: url('8.png'); }
         .image-box:nth-child(9) { background-image: url('9.png'); }
         .image-box:nth-child(10) { background-image: url('10.png'); }
+
+        /* Show image in the center */
+        .image-box.visible {
+            opacity: 0.75; /* 75% opacity */
+        }
     </style>
 </head>
 <body>
@@ -129,19 +132,13 @@
         function showNextImage() {
             // Hide all images
             images.forEach((img, index) => {
-                img.style.opacity = 0; // Hide all images
-                img.style.transform = 'translate(-50%, 100vh)'; // Reset position
+                img.style.opacity = index === currentIndex ? 0.75 : 0; // Show current image, hide others
             });
             
-            // Show the current image
-            const currentImage = images[currentIndex];
-            currentImage.style.opacity = 0.75; // Set current image to 75% opacity
-            currentImage.style.transform = 'translate(-50%, 0)'; // Move it to the center
-
             // Update the index for the next image
             currentIndex = (currentIndex + 1) % images.length;
 
-            // Schedule the next image to show after 6 seconds
+            // Schedule the next image to show after 2 seconds
             setTimeout(showNextImage, 6000);
         }
 

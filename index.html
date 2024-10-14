@@ -20,20 +20,20 @@
         h1 {
             font-size: 3em;
             margin-bottom: 0.5em;
-            text-shadow: 0 0 5px #e63946, 0 0 10px #e63946, 0 0 15px #e63946; /* Neon effect */
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Neon gold effect */
         }
 
         p {
             font-size: 1.2em;
             margin-bottom: 1em;
-            text-shadow: 0 0 3px #e63946, 0 0 5px #e63946; /* Neon effect for paragraph */
+            text-shadow: 0 0 3px #FFD700, 0 0 5px #FFD700; /* Neon gold effect for paragraph */
         }
 
         #countdown {
             font-size: 2em;
             font-weight: bold;
-            color: #e63946;
-            text-shadow: 0 0 5px #e63946, 0 0 10px #e63946; /* Neon effect */
+            color: #FFD700; /* Gold color */
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; /* Neon gold effect */
         }
 
         /* Container for moving images */
@@ -45,9 +45,6 @@
             height: 100vh;
             z-index: -1; /* Keeps images behind the main content */
             pointer-events: none; /* Ensures the moving images are not clickable */
-            display: flex; /* Use flexbox for centering */
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
         }
 
         /* Style for each image */
@@ -56,30 +53,10 @@
             height: 60%; /* Occupy 60% of the height */
             background-size: cover; /* Covers the entire div */
             position: absolute;
-            top: 50%; /* Center vertically */
             left: 50%; /* Center horizontally */
-            transform: translate(-50%, -50%); /* Offset to center */
+            transform: translate(-50%, 100vh); /* Start below the viewport */
             opacity: 0; /* Start fully transparent */
-            transition: opacity 3s ease-in-out; /* Smooth transition for opacity */
-            animation: move 6s linear infinite; /* Animation for movement */
-        }
-
-        /* Keyframes for the upward movement */
-        @keyframes move {
-            0% { 
-                transform: translate(-50%, 100vh); /* Start below the viewport */
-                opacity: 0; /* Fully transparent */
-            }
-            10% {
-                opacity: 0.75; /* Fade in */
-            }
-            90% {
-                opacity: 0.75; /* Fully visible */
-            }
-            100% { 
-                transform: translate(-50%, -100vh); /* End above the viewport */
-                opacity: 0; /* Fade out */
-            }
+            transition: opacity 1s ease-in-out, transform 6s ease-in-out; /* Smooth transition */
         }
 
         /* Background images for each box */
@@ -152,9 +129,15 @@
         function showNextImage() {
             // Hide all images
             images.forEach((img, index) => {
-                img.style.opacity = index === currentIndex ? 0.75 : 0; // Show current image at 75% opacity, hide others
+                img.style.opacity = 0; // Hide all images
+                img.style.transform = 'translate(-50%, 100vh)'; // Reset position
             });
             
+            // Show the current image
+            const currentImage = images[currentIndex];
+            currentImage.style.opacity = 0.75; // Set current image to 75% opacity
+            currentImage.style.transform = 'translate(-50%, 0)'; // Move it to the center
+
             // Update the index for the next image
             currentIndex = (currentIndex + 1) % images.length;
 

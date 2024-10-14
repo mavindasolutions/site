@@ -49,10 +49,13 @@
 
         /* Style for each image */
         .image-box {
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
+            width: 60%; /* Occupy 60% of the width */
+            height: 60%; /* Occupy 60% of the height */
             background-size: cover; /* Covers the entire div */
             position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Offset to center */
             opacity: 0; /* Start fully transparent */
             transition: opacity 3s ease-in-out; /* Smooth transition for opacity */
         }

@@ -10,26 +10,65 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('11.png'); /* Background image */
-            background-size: 30%; /* Ensures the image covers the entire background */
-            background-position: top 50%; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents repeating */
+            background-color: #f3f4f6; /* Background color */
             font-family: Arial, sans-serif;
             text-align: center;
             color: #333;
+            overflow: hidden; /* Prevents scrollbars from showing */
         }
+
         h1 {
             font-size: 3em;
             margin-bottom: 0.5em;
         }
+
         p {
             font-size: 1.2em;
             margin-bottom: 1em;
         }
+
         #countdown {
             font-size: 2em;
             font-weight: bold;
             color: #e63946;
+        }
+
+        /* Container for moving images */
+        .moving-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* Keeps images behind the main content */
+            pointer-events: none; /* Ensures the moving images are not clickable */
+        }
+
+        /* Style for each image */
+        .image-box {
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            position: absolute;
+            animation: move 20s linear infinite; /* Animation for movement */
+        }
+
+        /* Background images for each box */
+        .image-box:nth-child(1) { background-image: url('1.png'); }
+        .image-box:nth-child(2) { background-image: url('2.png'); }
+        .image-box:nth-child(3) { background-image: url('3.png'); }
+        .image-box:nth-child(4) { background-image: url('4.png'); }
+        .image-box:nth-child(5) { background-image: url('5.png'); }
+        .image-box:nth-child(6) { background-image: url('6.png'); }
+        .image-box:nth-child(7) { background-image: url('7.png'); }
+        .image-box:nth-child(8) { background-image: url('8.png'); }
+        .image-box:nth-child(9) { background-image: url('9.png'); }
+        .image-box:nth-child(10) { background-image: url('10.png'); }
+
+        /* Keyframes for the animation */
+        @keyframes move {
+            0% { transform: translateY(100vh); } /* Start below the viewport */
+            100% { transform: translateY(-100vh); } /* End above the viewport */
         }
     </style>
 </head>
@@ -39,6 +78,20 @@
         <p>We are working hard to launch our new website. Stay tuned!</p>
         <p>MAVINDA SOLUTIONS</p>
         <div id="countdown"></div>
+    </div>
+
+    <!-- Container for moving images -->
+    <div class="moving-images">
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
     </div>
 
     <script>
@@ -71,3 +124,4 @@
     </script>
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-\<!DOCTYPE html> 
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -123,11 +123,10 @@
 
         function showNextImage() {
             // Hide all images
-            images.forEach((img) => img.style.opacity = 0);
+            images.forEach((img, index) => {
+                img.style.opacity = index === currentIndex ? 1 : 0; // Show current image, hide others
+            });
             
-            // Show the current image
-            images[currentIndex].style.opacity = 1;
-
             // Update the index for the next image
             currentIndex = (currentIndex + 1) % images.length;
 

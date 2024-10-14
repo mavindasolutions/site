@@ -36,8 +36,8 @@
         /* Container for moving images */
         .moving-images {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 3;
+            left: 3;
             width: 100vw;
             height: 100vh;
             z-index: -1; /* Keeps images behind the main content */
@@ -51,7 +51,7 @@
             background-size: cover; /* Covers the entire div */
             position: absolute;
             opacity: 0; /* Start fully transparent */
-            transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
+            transition: opacity 3s ease-in-out; /* Smooth transition for opacity */
         }
 
         /* Background images for each box */
@@ -131,7 +131,7 @@
             currentIndex = (currentIndex + 1) % images.length;
 
             // Schedule the next image to show after 2 seconds
-            setTimeout(showNextImage, 2000);
+            setTimeout(showNextImage, 6000);
         }
 
         // Start showing images

@@ -15,25 +15,39 @@
             text-align: center;
             color: #333;
             overflow: hidden; /* Prevents scrollbars from showing */
+            position: relative; /* Relative positioning for child elements */
         }
 
         h1 {
             font-size: 3em;
             margin-bottom: 0.5em;
-            text-shadow: 0 0 5px #FFFFFF, 0 0 10px #FFFFFF, 0 0 15px #FFFFFF; /* Neon white effect */
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Neon gold effect */
+            position: absolute; /* Positioning to keep it centered */
+            top: 20%; /* Move down a bit */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center horizontally */
         }
 
         p {
             font-size: 1.2em;
             margin-bottom: 1em;
-            text-shadow: 0 0 3px #FFFFFF, 0 0 5px #FFD700; /* Neon white effect for paragraph */
+            color: black; /* Change paragraph color to black */
+            text-shadow: 0 0 3px #FFD700, 0 0 5px #FFD700; /* Neon gold effect for paragraph */
+            position: absolute; /* Positioning to keep it at the bottom */
+            bottom: 10px; /* Distance from the bottom */
+            left: 50%;
+            transform: translateX(-50%); /* Center horizontally */
         }
 
         #countdown {
             font-size: 2em;
             font-weight: bold;
-            color: #FFD700; /* White color */
-            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; /* Neon white effect */
+            color: #FFD700; /* Gold color */
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; /* Neon gold effect */
+            position: absolute; /* Positioning to keep it centered */
+            top: 50%; /* Move down to the center */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center horizontally */
         }
 
         /* Container for moving images */
@@ -46,9 +60,6 @@
             z-index: -1; /* Keeps images behind the main content */
             pointer-events: none; /* Ensures the moving images are not clickable */
             overflow: hidden; /* Prevents scrollbars from showing */
-            display: grid; /* Use grid layout */
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive columns */
-            grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive rows */
         }
 
         /* Style for each image */
@@ -57,7 +68,7 @@
             height: 100%; /* Full height */
             background-size: cover; /* Covers the entire div */
             background-position: center; /* Center the image */
-            position: relative; /* Ensure it stays in the grid */
+            position: absolute; /* Ensure it stays in the grid */
             opacity: 0; /* Start fully transparent */
             transition: opacity 1s ease-in-out; /* Smooth transition for opacity */
         }
@@ -78,9 +89,9 @@
 <body>
     <div>
         <h1>Coming Soon</h1>
+        <div id="countdown"></div>
         <p>We are working hard to launch our new website. Stay tuned!</p>
         <p>MAVINDA SOLUTIONS</p>
-        <div id="countdown"></div>
     </div>
 
     <!-- Container for moving images -->
